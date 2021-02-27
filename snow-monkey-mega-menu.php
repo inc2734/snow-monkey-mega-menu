@@ -1,7 +1,7 @@
 <?php
 /**
  * Plugin name: Snow Monkey Mega Menu
- * Version: 10.3.0
+ * Version: 0.1.0
  * Description:
  * Author: inc2734
  * Author URI: https://2inc.org
