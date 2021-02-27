@@ -1,0 +1,70 @@
+@import '../../node_modules/sass-basis/src/css/basis-core';
+
+$color-accent: #cd162c !default;
+
+.l-header:not(.l-header--left) {
+  position: relative;
+
+  .snow-monkey-mega-menu {
+    position: static;
+  }
+}
+
+.l-header--left {
+  .snow-monkey-mega-menu {
+    > .c-navbar__submenu {
+      @include _media-min(lg) {
+        $body-margin-left: 280px; // for IE
+        --body-margin-left: #{ $body-margin-left };
+        width: calc(100vw - #{ $body-margin-left });
+        width: calc(100vw - var(--body-margin-left, #{ $body-margin-left }));
+        max-width: none;
+        max-height: 100vh;
+        overflow: auto;
+
+        &::before {
+          margin: 0;
+        }
+      }
+    }
+  }
+}
+
+.snow-monkey-mega-menu {
+  .c-navbar__submenu {
+    background-color: transparent;
+  }
+
+  > .c-navbar__submenu {
+    background-color: var(--accent-color, $color-accent);
+    width: 100%;
+    max-width: 1280px;
+
+    &::before {
+      top: 0 !important;
+      right: 0 !important;
+      bottom: 0 !important;
+      left: 0 !important;
+      height: auto !important;
+      width: auto !important;
+      border: none !important;
+      margin: 0 calc(50% - 50vw);
+      background-color: var(--accent-color, $color-accent);
+    }
+
+    &::after {
+      content: '';
+      position: absolute;
+      top: -1.5rem;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      z-index: -1;
+    }
+  }
+}
+
+@import 'mega-menu-1';
+@import 'mega-menu-2';
+@import 'mega-menu-3';
+@import 'mega-menu-4';

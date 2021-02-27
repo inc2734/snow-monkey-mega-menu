@@ -1,0 +1,10 @@
+.DS_Store
+vendor/
+node_modules/
+snow-monkey-mega-menu.zip
+snow-monkey-mega-menu
+dist/
+npm-debug.log
+.wp-env.override.json
+/sql/
+/.themes/

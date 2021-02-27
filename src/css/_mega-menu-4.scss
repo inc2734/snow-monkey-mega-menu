@@ -1,0 +1,56 @@
+.snow-monkey-mega-menu--mega-menu-4 {
+  > .c-navbar__submenu {
+    display: flex;
+    flex-wrap: wrap;
+    white-space: normal;
+    padding: .5rem;
+
+    > .c-navbar__subitem {
+      flex: 1 1 (100% / 6);
+      max-width: (100% / 6);
+
+      > a {
+        font-weight: bold;
+        padding: 1rem;
+      }
+    }
+
+    .c-navbar__submenu {
+      display: none !important;
+    }
+  }
+
+  .snow-monkey-mega-menu__figure {
+    position: relative;
+    background-color: #eee;
+
+    &::before {
+      content: '';
+      display: block;
+      padding: 56.25% 0 0;
+    }
+
+    > img {
+      width: 100%;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+
+      @supports (object-fit: cover) {
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        transform: none;
+        object-fit: cover;
+        object-position: 50% 50%;
+        height: 100%;
+      }
+    }
+  }
+
+  .snow-monkey-mega-menu__label {
+    margin: .75rem 0 0;
+  }
+}

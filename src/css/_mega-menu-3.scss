@@ -1,0 +1,19 @@
+.snow-monkey-mega-menu--mega-menu-3 {
+  > .c-navbar__submenu {
+    display: flex;
+    flex-wrap: wrap;
+
+    > .c-navbar__subitem {
+      flex: 1 1 (100 / 6 * 1%);
+      max-width: (100 / 6 * 1%);
+
+      > a {
+        @include _padding(.5, 1);
+      }
+    }
+
+    .c-navbar__submenu {
+      display: none !important;
+    }
+  }
+}

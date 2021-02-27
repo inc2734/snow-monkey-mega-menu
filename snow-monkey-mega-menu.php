@@ -1,0 +1,83 @@
+<?php
+/**
+ * Plugin name: Snow Monkey Mega Menu
+ * Version: 10.3.0
+ * Description:
+ * Author: inc2734
+ * Author URI: https://2inc.org
+ * License: GPL2 or later
+ * License URI: https://www.gnu.org/licenses/gpl-2.0.html
+ * Text Domain: snow-monkey-mega-menu
+ *
+ * @package snow-monkey-mega-menu
+ * @author inc2734
+ * @license GPL-2.0+
+ */
+
+namespace Snow_Monkey\Plugin\MegaMenu;
+
+use Snow_Monkey\Plugin\MegaMenu\App\Controller;
+
+define( 'SNOW_MONKEY_MEGA_MENU_URL', untrailingslashit( plugin_dir_url( __FILE__ ) ) );
+define( 'SNOW_MONKEY_MEGA_MENU_PATH', untrailingslashit( plugin_dir_path( __FILE__ ) ) );
+
+class Bootstrap {
+
+	/**
+	 * constructor
+	 */
+	public function __construct() {
+		add_action( 'plugins_loaded', [ $this, '_bootstrap' ] );
+	}
+
+	/**
+	 * bootstrap
+	 */
+	public function _bootstrap() {
+		load_plugin_textdomain( 'snow-monkey-mega-menu', false, basename( __DIR__ ) . '/languages' );
+
+		$theme = wp_get_theme( get_template() );
+		if ( 'snow-monkey' !== $theme->template && 'snow-monkey/resources' !== $theme->template ) {
+			add_action(
+				'admin_notices',
+				function() {
+					?>
+					<div class="notice notice-warning is-dismissible">
+						<p>
+							<?php esc_html_e( '[Snow Monkey Mega Menu] Needs the Snow Monkey.', 'snow-monkey-mega-menu' ); ?>
+						</p>
+					</div>
+					<?php
+				}
+			);
+			return;
+		}
+
+		/**
+		 * Only existing header layouts should be supported,
+		 * as original header layouts may cause unexpected problems.
+		 */
+		add_action(
+			'after_setup_theme',
+			function() {
+				$header_layout        = get_theme_mod( 'header-layout' );
+				$valid_header_layouts = [
+					'1row',
+					'2row',
+					'center',
+					'simple',
+					'left',
+				];
+				if ( ! in_array( $header_layout, $valid_header_layouts, true ) ) {
+					return;
+				}
+
+				new Controller\Admin();
+				new Controller\Front();
+			}
+		);
+	}
+}
+
+require_once( SNOW_MONKEY_MEGA_MENU_PATH . '/vendor/autoload.php' );
+new Bootstrap();
