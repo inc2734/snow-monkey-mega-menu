@@ -55,6 +55,8 @@ class Front {
 		$thumbnail = '';
 		if ( 'post_type' === $item->type ) {
 			$thumbnail = get_the_post_thumbnail( $item_id );
+		} elseif ( 'post_type_archive' === $item->type ) {
+			$thumbnail = \Framework\Helper::get_the_post_type_archive_thumbnail( $item->object );
 		} elseif ( 'taxonomy' === $item->type ) {
 			$taxonomy = get_taxonomy( $item->object );
 			if ( 'category' === $item->object || is_taxonomy_hierarchical( $taxonomy ) ) {
