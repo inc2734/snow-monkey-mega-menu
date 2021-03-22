@@ -42,6 +42,7 @@ class Admin {
 					<option value="<?php echo esc_attr( $value ); ?>" <?php selected( $value, $mega_menu ); ?>><?php echo esc_html( $label ); ?></option>
 				<?php endforeach; ?>
 			</select>
+			<span class="description"><?php esc_html_e( 'This is only reflected when menu Location is set to global navigation.', 'snow-monkey-mega-menu' ); ?></span>
 
 			<?php wp_nonce_field( 'snow-monkey-mega-menu', 'snow-monkey-mega-menu-nonce' ); ?>
 		</p>

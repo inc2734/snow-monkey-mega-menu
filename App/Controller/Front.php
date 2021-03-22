@@ -15,8 +15,8 @@ class Front {
 	 * Constructor.
 	 */
 	public function __construct() {
-		add_filter( 'walker_nav_menu_start_el', [ $this, '_item' ], 10, 3 );
-		add_filter( 'wp_nav_menu_objects', [ $this, '_add_classes' ] );
+		add_filter( 'walker_nav_menu_start_el', [ $this, '_item' ], 10, 4 );
+		add_filter( 'wp_nav_menu_objects', [ $this, '_add_classes' ], 10, 2 );
 		add_action( 'wp_enqueue_scripts', [ $this, '_enqueue_assets' ] );
 		add_action( 'inc2734_wp_customizer_framework_load_styles', [ $this, '_load_styles' ] );
 	}
@@ -24,12 +24,17 @@ class Front {
 	/**
 	 * Add the post thumbnail to the nav item.
 	 *
-	 * @param string  $item_output The menu item's starting HTML output.
-	 * @param WP_Post $item        Menu item data object.
-	 * @param int     $depth       Depth of menu item. Used for padding.
+	 * @param string   $item_output The menu item's starting HTML output.
+	 * @param WP_Post  $item        Menu item data object.
+	 * @param int      $depth       Depth of menu item. Used for padding.
+	 * @param stdClass $args        An object of wp_nav_menu() arguments.
 	 * @return string
 	 */
-	public function _item( $item_output, $item, $depth ) {
+	public function _item( $item_output, $item, $depth, $args ) {
+		if ( 'global-nav' !== $args->theme_location ) {
+			return $item_output;
+		}
+
 		if ( 1 !== $depth ) {
 			return $item_output;
 		}
@@ -53,16 +58,33 @@ class Front {
 		}
 
 		$thumbnail = '';
-		if ( 'post_type' === $item->type ) {
-			$thumbnail = get_the_post_thumbnail( $item_id );
-		} elseif ( 'post_type_archive' === $item->type ) {
-			$thumbnail = \Framework\Helper::get_the_post_type_archive_thumbnail( $item->object );
+		if ( 'post_type_archive' === $item->type && 'product' === $item->object ) {
+			$post_type_object = get_post_type_object( $item->object );
+			$image_url        = Helper\Page_Header\WooCommerce_Archive_Page_Header::get_image_url( $post_type_object );
+		} elseif ( 'taxonomy' === $item->type && in_array( $item->object, [ 'product_cat', 'product_tag' ], true ) ) {
+			$wp_term   = get_term( $item_id, $item->object );
+			$image_url = Helper\Page_Header\WooCommerce_Term_Page_Header::get_image_url( $wp_term );
+		} elseif ( 'post_type' === $item->type && 'product' === $item->object ) {
+			$wp_post   = get_post( $item_id );
+			$image_url = Helper\Page_Header\WooCommerce_Single_Page_Header::get_image_url( $wp_post );
+		} elseif ( 'post_type' === $item->type ) {
+			$wp_post   = get_post( $item_id );
+			$image_url = Helper\Page_Header\Singular_Page_Header::get_image_url( $wp_post );
 		} elseif ( 'taxonomy' === $item->type ) {
-			$taxonomy = get_taxonomy( $item->object );
-			if ( 'category' === $item->object || is_taxonomy_hierarchical( $taxonomy ) ) {
-				$term      = get_term( $item_id, $taxonomy->name );
-				$thumbnail = \Framework\Helper::get_the_category_thumbnail( $term );
-			}
+			$wp_term   = get_term( $item_id, $item->object );
+			$image_url = Helper\Page_Header\Term_Page_Header::get_image_url( $wp_term );
+		} elseif ( 'post_type_archive' === $item->type ) {
+			$post_type_object = get_post_type_object( $item->object );
+			$image_url        = Helper\Page_Header\Archive_Page_Header::get_image_url( $post_type_object );
+		} else {
+			$image_url = Helper\Page_Header\Default_Page_Header::get_image_url( null );
+		}
+
+		if ( ! empty( $image_url ) ) {
+			$thumbnail = sprintf(
+				'<img src="%1$s" alt="">',
+				esc_url( $image_url )
+			);
 		}
 
 		return preg_replace(
@@ -75,10 +97,15 @@ class Front {
 	/**
 	 * Add classes to the menu item.
 	 *
-	 * @param array $sorted_menu_items The menu items, sorted by each menu item's menu order.
+	 * @param array    $sorted_menu_items The menu items, sorted by each menu item's menu order.
+	 * @param stdClass $args              An object containing wp_nav_menu() arguments.
 	 * @return array
 	 */
-	public function _add_classes( $sorted_menu_items ) {
+	public function _add_classes( $sorted_menu_items, $args ) {
+		if ( 'global-nav' !== $args->theme_location ) {
+			return $sorted_menu_items;
+		}
+
 		foreach ( $sorted_menu_items as $index => $item ) {
 			$mega_menu = get_post_meta( $item->ID, 'snow-monkey-mega-menu', true );
 			if ( ! $mega_menu ) {

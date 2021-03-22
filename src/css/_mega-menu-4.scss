@@ -3,7 +3,9 @@
     display: flex;
     flex-wrap: wrap;
     white-space: normal;
-    padding: .5rem;
+    @include container-padding();
+    padding-top: .5rem;
+    padding-bottom: .5rem;
 
     > .c-navbar__subitem {
       flex: 1 1 (100% / 6);

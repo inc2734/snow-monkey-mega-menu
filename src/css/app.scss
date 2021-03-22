@@ -1,6 +1,41 @@
-@import '../../node_modules/sass-basis/src/css/basis-core';
+$_base-font-size-px: 16px !default;
+$_between-lines: (1rem / 2.6) !default;
 
 $color-accent: #cd162c !default;
+
+@import '../../node_modules/sass-basis/src/css/basis-core';
+
+@mixin container-padding() {
+  padding-right: $_container-margin;
+  padding-left: $_container-margin;
+
+  padding-right: calc(#{ _var-container-margin-sm() } + constant(safe-area-inset-right));
+  padding-left: calc(#{ _var-container-margin-sm() } + constant(safe-area-inset-left));
+
+  padding-right: calc(#{ _var-container-margin-sm() } + env(safe-area-inset-right));
+  padding-left: calc(#{ _var-container-margin-sm() } + env(safe-area-inset-left));
+
+  @supports (-ms-ime-align: auto) {
+    padding-right: #{ _var-container-margin-sm() }; // for Edge
+    padding-left: #{ _var-container-margin-sm() }; // for Edge
+  }
+
+  @include _media-min(md) {
+    padding-right: $_container-margin * 2;
+    padding-left: $_container-margin * 2;
+
+    padding-right: calc(#{ _var-container-margin() } + constant(safe-area-inset-right));
+    padding-left: calc(#{ _var-container-margin() } + constant(safe-area-inset-left));
+
+    padding-right: calc(#{ _var-container-margin() } + env(safe-area-inset-right));
+    padding-left: calc(#{ _var-container-margin() } + env(safe-area-inset-left));
+
+    @supports (-ms-ime-align: auto) {
+      padding-right: #{ _var-container-margin-sm() }; // for Edge
+      padding-left: #{ _var-container-margin-sm() }; // for Edge
+    }
+  }
+}
 
 .l-header:not(.l-header--left) {
   position: relative;
@@ -31,6 +66,37 @@ $color-accent: #cd162c !default;
 }
 
 .snow-monkey-mega-menu {
+  &[aria-haspopup="true"] {
+    &::before {
+      display: none !important;
+    }
+
+    > a {
+      position: relative;
+
+      &::before {
+        content: '';
+        display: block;
+        @include _triangle-top(16px, 10px, var(--accent-color, $color-accent));
+        position: absolute;
+        bottom: -0;
+        left: calc(50% - 8px);
+        visibility: hidden;
+        opacity: 0;
+        @include _transition(opacity);
+      }
+    }
+
+    @include _hover(lg) {
+      > a {
+        &::before {
+          visibility: visible;
+          opacity: 1;
+        }
+      }
+    }
+  }
+
   .c-navbar__submenu {
     background-color: transparent;
   }
@@ -39,18 +105,6 @@ $color-accent: #cd162c !default;
     background-color: var(--accent-color, $color-accent);
     width: 100%;
     max-width: 1280px;
-
-    &::before {
-      top: 0 !important;
-      right: 0 !important;
-      bottom: 0 !important;
-      left: 0 !important;
-      height: auto !important;
-      width: auto !important;
-      border: none !important;
-      margin: 0 calc(50% - 50vw);
-      background-color: var(--accent-color, $color-accent);
-    }
 
     &::after {
       content: '';

@@ -19,9 +19,11 @@ if ( ! $accent_color ) {
 }
 
 Style::register(
-	[
-		'.snow-monkey-mega-menu > .c-navbar__submenu',
-		'.snow-monkey-mega-menu > .c-navbar__submenu::before',
-	],
+	'.snow-monkey-mega-menu > .c-navbar__submenu',
 	'background-color: ' . $accent_color
+);
+
+Style::register(
+	'.snow-monkey-mega-menu[aria-haspopup="true"] > a::before',
+	'border-bottom-color: ' . $accent_color
 );

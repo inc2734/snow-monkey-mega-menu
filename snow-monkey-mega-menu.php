@@ -2,6 +2,10 @@
 /**
  * Plugin name: Snow Monkey Mega Menu
  * Version: 0.1.0
+ * Tested up to: 5.7
+ * Requires at least: 5.7
+ * Requires PHP: 5.6
+ * Requires Snow Monkey: 14.0.0-rc2
  * Description:
  * Author: inc2734
  * Author URI: https://2inc.org
@@ -48,6 +52,43 @@ class Bootstrap {
 					<div class="notice notice-warning is-dismissible">
 						<p>
 							<?php esc_html_e( '[Snow Monkey Mega Menu] Needs the Snow Monkey.', 'snow-monkey-mega-menu' ); ?>
+						</p>
+					</div>
+					<?php
+				}
+			);
+			return;
+		}
+
+		$data = get_file_data(
+			__FILE__,
+			[
+				'RequiresSnowMonkey' => 'Requires Snow Monkey',
+			]
+		);
+
+		if (
+			isset( $data['RequiresSnowMonkey'] ) &&
+			version_compare( $theme->get( 'Version' ), $data['RequiresSnowMonkey'], '<' )
+		) {
+			add_action(
+				'admin_notices',
+				function() use ( $data ) {
+					?>
+					<div class="notice notice-warning is-dismissible">
+						<p>
+							<?php
+							echo esc_html(
+								sprintf(
+									// translators: %1$s: version
+									__(
+										'[Snow Monkey Mega Menu] Needs the Snow Monkey %1$s or more.',
+										'snow-monkey-mega-menu'
+									),
+									'v' . $data['RequiresSnowMonkey']
+								)
+							);
+							?>
 						</p>
 					</div>
 					<?php

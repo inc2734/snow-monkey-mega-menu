@@ -1,0 +1,65 @@
+# Copyright (C) 2021 Snow Monkey Mega Menu
+# This file is distributed under the same license as the Snow Monkey Mega Menu package.
+msgid ""
+msgstr ""
+"Project-Id-Version: Snow Monkey Mega Menu 0.1.0\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/snow-monkey-mega-"
+"menu\n"
+"POT-Creation-Date: 2021-03-18 16:35+0900\n"
+"PO-Revision-Date: 2021-03-18 16:36+0900\n"
+"Last-Translator: inc2734 <inc@2inc.org>\n"
+"Language-Team: \n"
+"Language: ja\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 2.4.2\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Poedit-Basepath: ..\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-KeywordsList: __;_e;_n:1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;esc_attr__;"
+"esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c;"
+"_n_noop:1,2;_nx_noop:3c,1,2;__ngettext_noop:1,2\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SearchPathExcluded-0: *.js\n"
+"X-Poedit-SearchPathExcluded-1: .themes\n"
+"X-Poedit-SearchPathExcluded-2: vendor\n"
+
+#: App/Controller/Admin.php:39
+msgid "Mega menu setting"
+msgstr "メガメニューの設定"
+
+#: App/Controller/Admin.php:45
+msgid "This is only reflected when menu Location is set to global navigation."
+msgstr ""
+"メニューの位置がグローバルナビゲーションに設定されている場合にのみ反映されま"
+"す。"
+
+#: App/Helper.php:19
+msgid "None"
+msgstr "なし"
+
+#: App/Helper.php:20
+msgid "Mega Menu 1"
+msgstr "メガメニュー1"
+
+#: App/Helper.php:21
+msgid "Mega Menu 2"
+msgstr "メガメニュー2"
+
+#: App/Helper.php:22
+msgid "Mega Menu 3"
+msgstr "メガメニュー3"
+
+#: App/Helper.php:23
+msgid "Mega Menu 4"
+msgstr "メガメニュー4"
+
+#: snow-monkey-mega-menu.php:54
+msgid "[Snow Monkey Mega Menu] Needs the Snow Monkey."
+msgstr "[Snow Monkey Mega Menu] Snow Monkey が必要です。"
+
+#: snow-monkey-mega-menu.php:85
+#, php-format
+msgid "[Snow Monkey Mega Menu] Needs the Snow Monkey %1$s or more."
+msgstr "[Snow Monkey Mega Menu] Snow Monkey %1$s 以上が必要です。"
