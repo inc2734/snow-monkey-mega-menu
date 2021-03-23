@@ -37,7 +37,18 @@ $color-accent: #cd162c !default;
   }
 }
 
-.l-header:not(.l-header--left) {
+/*
+&--sticky-sm
+&--sticky-lg
+&--overlay-sm
+&--overlay-lg
+&--sticky-overlay-sm
+&--sticky-overlay-lg
+&--sticky-overlay-colored-sm
+&--sticky-overlay-colored-lg
+&--left
+*/
+.p-global-nav {
   position: relative;
 
   .snow-monkey-mega-menu {
