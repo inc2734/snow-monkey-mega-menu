@@ -37,13 +37,12 @@ $color-accent: #cd162c !default;
   }
 }
 
-.l-header:not(.l-header--left) {
-  .p-global-nav {
-    position: relative;
+.l-header:not(.l-header--left) [data-has-global-nav="true"],
+.p-drop-nav .p-global-nav {
+  position: relative;
 
-    .snow-monkey-mega-menu {
-      position: static;
-    }
+  .snow-monkey-mega-menu {
+    position: static;
   }
 }
 
