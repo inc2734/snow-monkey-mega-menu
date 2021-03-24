@@ -37,22 +37,13 @@ $color-accent: #cd162c !default;
   }
 }
 
-/*
-&--sticky-sm
-&--sticky-lg
-&--overlay-sm
-&--overlay-lg
-&--sticky-overlay-sm
-&--sticky-overlay-lg
-&--sticky-overlay-colored-sm
-&--sticky-overlay-colored-lg
-&--left
-*/
-.p-global-nav {
-  position: relative;
+.l-header:not(.l-header--left) {
+  .p-global-nav {
+    position: relative;
 
-  .snow-monkey-mega-menu {
-    position: static;
+    .snow-monkey-mega-menu {
+      position: static;
+    }
   }
 }
 
@@ -68,9 +59,34 @@ $color-accent: #cd162c !default;
         max-height: 100vh;
         overflow: auto;
 
-        &::before {
-          margin: 0;
+        &::before,
+        &::after {
+          display: none;
         }
+      }
+    }
+  }
+}
+
+.l-header:not(.l-header--left) {
+  .snow-monkey-mega-menu[aria-haspopup="true"] {
+    > a {
+      &::before {
+        @include _triangle-top(16px, 10px, var(--accent-color, $color-accent));
+        bottom: -0;
+        left: calc(50% - 8px);
+      }
+    }
+  }
+}
+
+.l-header--left {
+  .snow-monkey-mega-menu[aria-haspopup="true"] {
+    > a {
+      &::before {
+        @include _triangle-left(10px, 16px, var(--accent-color, $color-accent));
+        right: -0;
+        top: calc(50% - 5px);
       }
     }
   }
@@ -87,11 +103,8 @@ $color-accent: #cd162c !default;
 
       &::before {
         content: '';
-        display: block;
-        @include _triangle-top(16px, 10px, var(--accent-color, $color-accent));
         position: absolute;
-        bottom: -0;
-        left: calc(50% - 8px);
+        display: block;
         visibility: hidden;
         opacity: 0;
         @include _transition(opacity);
