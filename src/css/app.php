@@ -19,7 +19,10 @@ if ( ! $accent_color ) {
 }
 
 Style::register(
-	'.snow-monkey-mega-menu > .c-navbar__submenu',
+	[
+		'.snow-monkey-mega-menu > .c-navbar__submenu',
+		'.snow-monkey-mega-menu > .c-navbar__submenu::before',
+	],
 	'background-color: ' . $accent_color
 );
 
