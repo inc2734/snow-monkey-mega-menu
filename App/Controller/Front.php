@@ -130,6 +130,14 @@ class Front {
 			[ Helper::get_main_style_handle() ],
 			filemtime( SNOW_MONKEY_MEGA_MENU_PATH . '/dist/css/app.css' )
 		);
+
+		wp_enqueue_script(
+			'snow-monkey-mega-menu',
+			SNOW_MONKEY_MEGA_MENU_URL . '/dist/js/app.js',
+			[ Helper::get_main_script_handle() ],
+			filemtime( SNOW_MONKEY_MEGA_MENU_PATH . '/dist/js/app.js' ),
+			true
+		);
 	}
 
 	/**

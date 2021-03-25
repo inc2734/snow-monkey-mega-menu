@@ -5,6 +5,7 @@
   "devDependencies": {
     "@wordpress/browserslist-config": "^3.0.1",
     "@wordpress/env": "github:team-hamworks/wordpress-env",
+    "@wordpress/scripts": "^14.0.1",
     "autoprefixer": "^10.2.5",
     "cpy-cli": "^3.1.1",
     "cssnano": "^4.1.10",
@@ -30,10 +31,13 @@
     "test": "run-s test:*",
     "clean:zip": "rimraf snow-monkey-mega-menu.zip",
     "clean:css": "rimraf dist/css && mkdir -p dist/css",
+    "clean:js": "rimraf dist/js && mkdir -p dist/js",
     "css:app": "node-sass src/css/app.scss dist/css/app.css && postcss dist/css/app.css -r -c=postcss.config.js",
     "css:php": "cpy '**/*.php' '../../dist/css' --cwd=src/css --parents",
     "css": "npm run clean:css && npm-run-all -p css:*",
-    "build": "npm-run-all -p css",
+    "js:app": "wp-scripts build src/js/app --output-path=dist/js",
+    "js": "npm run clean:js && run-p js:*",
+    "build": "npm-run-all -p css js",
     "zip:pack": "rsync -a --exclude='/vendor' --exclude='/node_modules' --exclude='.*' --exclude='*.config.js' --exclude='*.xml.dist' --exclude='*.ruleset.xml' --exclude='/sql' --exclude='/tests' --exclude='package*.json' . snow-monkey-mega-menu && cd snow-monkey-mega-menu && composer install --no-dev",
     "zip:archive": "zip -9 -qmr snow-monkey-mega-menu.zip snow-monkey-mega-menu",
     "zip": "npm run clean:zip && npm run zip:pack && npm run zip:archive"

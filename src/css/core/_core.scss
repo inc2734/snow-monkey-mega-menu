@@ -1,0 +1,9 @@
+$_base-font-size-px: 16px !default;
+$_between-lines: (1rem / 2.6) !default;
+$_container-max-widt: 1280px !default;
+
+$color-accent: #cd162c !default;
+
+@import '../../../node_modules/sass-basis/src/css/basis-core';
+
+@import 'mixin';
