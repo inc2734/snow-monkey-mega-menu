@@ -21,6 +21,7 @@ document.addEventListener(
 		};
 
 		init();
+		window.addEventListener('load', () => init(), true);
 		window.addEventListener('resize', () => init(), true);
 	},
 	true
