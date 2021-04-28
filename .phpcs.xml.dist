@@ -42,4 +42,5 @@
   <exclude-pattern>*/languages/*</exclude-pattern>
   <exclude-pattern>*/dist/*</exclude-pattern>
   <exclude-pattern>*/.themes/*</exclude-pattern>
+	<exclude-pattern>/.export/*</exclude-pattern>
 </ruleset>
