@@ -6,6 +6,5 @@ snow-monkey-mega-menu
 dist/
 npm-debug.log
 .wp-env.override.json
-/sql/
 /.themes/
-/uploads/
+/.export/*
