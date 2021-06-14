@@ -106,6 +106,7 @@ class Bootstrap {
 			function() {
 				$header_layout        = get_theme_mod( 'header-layout' );
 				$valid_header_layouts = [
+					false,
 					'1row',
 					'2row',
 					'center',
