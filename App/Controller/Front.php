@@ -57,34 +57,29 @@ class Front {
 			return $item_output;
 		}
 
+		$thumbnail_size = apply_filters( 'snow_monkey_mega_menu_thumbnail_size', 'medium', $mega_menu );
+
 		$thumbnail = '';
 		if ( 'post_type_archive' === $item->type && 'product' === $item->object ) {
 			$post_type_object = get_post_type_object( $item->object );
-			$image_url        = Helper\Page_Header\WooCommerce_Archive_Page_Header::get_image_url( $post_type_object );
+			$thumbnail        = Helper\Page_Header\WooCommerce_Archive_Page_Header::get_image( $post_type_object, $thumbnail_size );
 		} elseif ( 'taxonomy' === $item->type && in_array( $item->object, [ 'product_cat', 'product_tag' ], true ) ) {
 			$wp_term   = get_term( $item_id, $item->object );
-			$image_url = Helper\Page_Header\WooCommerce_Term_Page_Header::get_image_url( $wp_term );
+			$thumbnail = Helper\Page_Header\WooCommerce_Term_Page_Header::get_image( $wp_term, $thumbnail_size );
 		} elseif ( 'post_type' === $item->type && 'product' === $item->object ) {
 			$wp_post   = get_post( $item_id );
-			$image_url = Helper\Page_Header\WooCommerce_Single_Page_Header::get_image_url( $wp_post );
+			$thumbnail = Helper\Page_Header\WooCommerce_Single_Page_Header::get_image( $wp_post, $thumbnail_size );
 		} elseif ( 'post_type' === $item->type ) {
 			$wp_post   = get_post( $item_id );
-			$image_url = Helper\Page_Header\Singular_Page_Header::get_image_url( $wp_post );
+			$thumbnail = Helper\Page_Header\Singular_Page_Header::get_image( $wp_post, $thumbnail_size );
 		} elseif ( 'taxonomy' === $item->type ) {
 			$wp_term   = get_term( $item_id, $item->object );
-			$image_url = Helper\Page_Header\Term_Page_Header::get_image_url( $wp_term );
+			$thumbnail = Helper\Page_Header\Term_Page_Header::get_image( $wp_term, $thumbnail_size );
 		} elseif ( 'post_type_archive' === $item->type ) {
 			$post_type_object = get_post_type_object( $item->object );
-			$image_url        = Helper\Page_Header\Archive_Page_Header::get_image_url( $post_type_object );
+			$thumbnail        = Helper\Page_Header\Archive_Page_Header::get_image( $post_type_object, $thumbnail_size );
 		} else {
-			$image_url = Helper\Page_Header\Default_Page_Header::get_image_url( null );
-		}
-
-		if ( ! empty( $image_url ) ) {
-			$thumbnail = sprintf(
-				'<img src="%1$s" alt="">',
-				esc_url( $image_url )
-			);
+			$thumbnail = Helper\Page_Header\Default_Page_Header::get_image( null, $thumbnail_size );
 		}
 
 		return preg_replace(
