@@ -1,11 +1,11 @@
 <?php
 /**
  * Plugin name: Snow Monkey Mega Menu
- * Version: 1.0.1
+ * Version: 2.0.0
  * Tested up to: 5.8
  * Requires at least: 5.8
  * Requires PHP: 5.6
- * Requires Snow Monkey: 15.0.0-beta4
+ * Requires Snow Monkey: 15.0.0
  * Description:
  * Author: inc2734
  * Author URI: https://2inc.org
