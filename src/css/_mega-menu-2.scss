@@ -43,7 +43,7 @@
       @include _transition(opacity);
     }
 
-    @include _hover(lg) {
+    @include _hover() {
       > a {
         background-color: transparent;
         opacity: .8;
