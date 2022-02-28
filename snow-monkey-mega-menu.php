@@ -1,7 +1,7 @@
 <?php
 /**
  * Plugin name: Snow Monkey Mega Menu
- * Version: 2.0.1
+ * Version: 2.0.2
  * Tested up to: 5.9
  * Requires at least: 5.8
  * Requires PHP: 5.6
