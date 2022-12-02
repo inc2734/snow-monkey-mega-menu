@@ -15,10 +15,10 @@ class Front {
 	 * Constructor.
 	 */
 	public function __construct() {
-		add_filter( 'walker_nav_menu_start_el', [ $this, '_item' ], 10, 4 );
-		add_filter( 'wp_nav_menu_objects', [ $this, '_add_classes' ], 10, 2 );
-		add_action( 'wp_enqueue_scripts', [ $this, '_enqueue_assets' ] );
-		add_action( 'inc2734_wp_customizer_framework_load_styles', [ $this, '_load_styles' ] );
+		add_filter( 'walker_nav_menu_start_el', array( $this, '_item' ), 10, 4 );
+		add_filter( 'wp_nav_menu_objects', array( $this, '_add_classes' ), 10, 2 );
+		add_action( 'wp_enqueue_scripts', array( $this, '_enqueue_assets' ) );
+		add_action( 'inc2734_wp_customizer_framework_load_styles', array( $this, '_load_styles' ) );
 	}
 
 	/**
@@ -63,7 +63,7 @@ class Front {
 		if ( 'post_type_archive' === $item->type && 'product' === $item->object ) {
 			$post_type_object = get_post_type_object( $item->object );
 			$thumbnail        = Helper\Page_Header\WooCommerce_Archive_Page_Header::get_image( $post_type_object, $thumbnail_size );
-		} elseif ( 'taxonomy' === $item->type && in_array( $item->object, [ 'product_cat', 'product_tag' ], true ) ) {
+		} elseif ( 'taxonomy' === $item->type && in_array( $item->object, array( 'product_cat', 'product_tag' ), true ) ) {
 			$wp_term   = get_term( $item_id, $item->object );
 			$thumbnail = Helper\Page_Header\WooCommerce_Term_Page_Header::get_image( $wp_term, $thumbnail_size );
 		} elseif ( 'post_type' === $item->type && 'product' === $item->object ) {
@@ -122,14 +122,14 @@ class Front {
 		wp_enqueue_style(
 			'snow-monkey-mega-menu',
 			SNOW_MONKEY_MEGA_MENU_URL . '/dist/css/app.css',
-			[ Helper::get_main_style_handle() ],
+			array( Helper::get_main_style_handle() ),
 			filemtime( SNOW_MONKEY_MEGA_MENU_PATH . '/dist/css/app.css' )
 		);
 
 		wp_enqueue_script(
 			'snow-monkey-mega-menu',
 			SNOW_MONKEY_MEGA_MENU_URL . '/dist/js/app.js',
-			[ Helper::get_main_script_handle() ],
+			array( Helper::get_main_script_handle() ),
 			filemtime( SNOW_MONKEY_MEGA_MENU_PATH . '/dist/js/app.js' ),
 			true
 		);

@@ -15,8 +15,8 @@ class Admin {
 	 * Constructor.
 	 */
 	public function __construct() {
-		add_action( 'wp_nav_menu_item_custom_fields', [ $this, '_add_custom_fields' ], 10, 3 );
-		add_action( 'wp_update_nav_menu_item', [ $this, '_update' ], 10, 2 );
+		add_action( 'wp_nav_menu_item_custom_fields', array( $this, '_add_custom_fields' ), 10, 3 );
+		add_action( 'wp_update_nav_menu_item', array( $this, '_update' ), 10, 2 );
 	}
 
 	/**
@@ -70,9 +70,9 @@ class Admin {
 			INPUT_POST,
 			'snow-monkey-mega-menu',
 			FILTER_DEFAULT,
-			[
+			array(
 				'flags' => FILTER_REQUIRE_ARRAY,
-			]
+			)
 		);
 
 		if ( $mega_menu && isset( $mega_menu[ $menu_item_db_id ] ) ) {

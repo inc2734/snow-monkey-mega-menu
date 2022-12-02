@@ -32,7 +32,7 @@ class Bootstrap {
 	 * Constructor.
 	 */
 	public function __construct() {
-		add_action( 'plugins_loaded', [ $this, '_bootstrap' ] );
+		add_action( 'plugins_loaded', array( $this, '_bootstrap' ) );
 	}
 
 	/**
@@ -41,7 +41,7 @@ class Bootstrap {
 	public function _bootstrap() {
 		load_plugin_textdomain( 'snow-monkey-mega-menu', false, basename( __DIR__ ) . '/languages' );
 
-		add_action( 'init', [ $this, '_activate_autoupdate' ] );
+		add_action( 'init', array( $this, '_activate_autoupdate' ) );
 
 		$theme = wp_get_theme( get_template() );
 		if ( 'snow-monkey' !== $theme->template && 'snow-monkey/resources' !== $theme->template ) {
@@ -62,9 +62,9 @@ class Bootstrap {
 
 		$data = get_file_data(
 			__FILE__,
-			[
+			array(
 				'RequiresSnowMonkey' => 'Requires Snow Monkey',
-			]
+			)
 		);
 
 		if (
@@ -105,14 +105,14 @@ class Bootstrap {
 			'after_setup_theme',
 			function() {
 				$header_layout        = get_theme_mod( 'header-layout' );
-				$valid_header_layouts = [
+				$valid_header_layouts = array(
 					false,
 					'1row',
 					'2row',
 					'center',
 					'simple',
 					'left',
-				];
+				);
 				if ( ! in_array( $header_layout, $valid_header_layouts, true ) ) {
 					return;
 				}
@@ -133,9 +133,9 @@ class Bootstrap {
 			plugin_basename( __FILE__ ),
 			'inc2734',
 			'snow-monkey-mega-menu',
-			[
+			array(
 				'homepage' => 'https://snow-monkey.2inc.org',
-			]
+			)
 		);
 	}
 }

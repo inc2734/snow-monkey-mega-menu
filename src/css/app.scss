@@ -32,59 +32,7 @@
   }
 }
 
-.l-header:not(.l-header--left) {
-  .snow-monkey-mega-menu[aria-haspopup="true"] {
-    > a {
-      &::before {
-        @include _triangle-top(16px, 10px, var(--accent-color, $color-accent));
-        bottom: -0;
-        left: calc(50% - 8px);
-      }
-    }
-  }
-}
-
-.l-header--left {
-  .snow-monkey-mega-menu[aria-haspopup="true"] {
-    > a {
-      &::before {
-        @include _triangle-left(10px, 16px, var(--accent-color, $color-accent));
-        right: -0;
-        top: calc(50% - 5px);
-      }
-    }
-  }
-}
-
 .snow-monkey-mega-menu {
-  &[aria-haspopup="true"] {
-    &::before {
-      display: none !important;
-    }
-
-    > a {
-      position: relative;
-
-      &::before {
-        content: '';
-        position: absolute;
-        display: block;
-        visibility: hidden;
-        opacity: 0;
-        @include _transition(opacity);
-      }
-    }
-
-    @include _hover() {
-      > a {
-        &::before {
-          visibility: visible;
-          opacity: 1;
-        }
-      }
-    }
-  }
-
   .c-navbar__submenu {
     background-color: transparent;
   }
