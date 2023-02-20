@@ -3,18 +3,18 @@
   "license": "GPL-2.0+",
   "dependencies": {},
   "devDependencies": {
-    "@wordpress/browserslist-config": "^5.5.0",
+    "@wordpress/browserslist-config": "^5.10.0",
     "@wordpress/env": "github:team-hamworks/wordpress-env",
-    "@wordpress/scripts": "^24.6.0",
+    "@wordpress/scripts": "^25.4.0",
     "autoprefixer": "^10.4.13",
     "cpy-cli": "^4.2.0",
-    "cssnano": "^5.1.14",
+    "cssnano": "^5.1.15",
     "node-sass": "^8.0.0",
     "npm-run-all": "^4.1.5",
-    "postcss": "^8.4.19",
+    "postcss": "^8.4.21",
     "postcss-cli": "^10.1.0",
-    "rimraf": "^3.0.2",
-    "sass-basis": "^17.1.1"
+    "rimraf": "^4.1.2",
+    "sass-basis": "^18.1.6"
   },
   "scripts": {
     "export:wp-content:themes": "npm run cli 'cp -r wp-content/themes .export/wp-content'",
@@ -43,13 +43,13 @@
     "clean:css": "rimraf dist/css && mkdir -p dist/css",
     "clean:js": "rimraf dist/js && mkdir -p dist/js",
     "css:app": "node-sass src/css/app.scss dist/css/app.css && postcss dist/css/app.css -r -c=postcss.config.js",
-    "css:php": "cpy 'src/css/**/*.php' 'dist/css'",
     "css": "npm run clean:css && npm-run-all -p css:*",
     "js:app": "wp-scripts build src/js/app.js --output-path=dist/js",
     "js": "npm run clean:js && run-p js:*",
     "build": "npm-run-all -p css js",
     "zip:pack": "rsync -a --exclude='/vendor' --exclude='/node_modules' --exclude='.*' --exclude='*.config.js' --exclude='*.xml.dist' --exclude='*.ruleset.xml' --exclude='/sql' --exclude='/tests' --exclude='/uploads' --exclude='package*.json' . snow-monkey-mega-menu && wp-env start && wp-env run composer 'install --no-dev -d snow-monkey-mega-menu'",
     "zip:archive": "zip -9 -qmr snow-monkey-mega-menu.zip snow-monkey-mega-menu",
-    "zip": "npm run clean:zip && npm run zip:pack && npm run zip:archive"
+    "zip": "npm run clean:zip && npm run zip:pack && npm run zip:archive",
+    "make-pot": "npm run wp 'i18n make-pot wp-content/plugins/snow-monkey-mega-menu wp-content/plugins/snow-monkey-mega-menu/languages/snow-monkey-mega-menu.pot --exclude=src'"
   }
 }

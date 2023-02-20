@@ -18,7 +18,6 @@ class Front {
 		add_filter( 'walker_nav_menu_start_el', array( $this, '_item' ), 10, 4 );
 		add_filter( 'wp_nav_menu_objects', array( $this, '_add_classes' ), 10, 2 );
 		add_action( 'wp_enqueue_scripts', array( $this, '_enqueue_assets' ) );
-		add_action( 'inc2734_wp_customizer_framework_load_styles', array( $this, '_load_styles' ) );
 	}
 
 	/**
@@ -133,12 +132,5 @@ class Front {
 			filemtime( SNOW_MONKEY_MEGA_MENU_PATH . '/dist/js/app.js' ),
 			true
 		);
-	}
-
-	/**
-	 * Load PHP files for styles
-	 */
-	public function _load_styles() {
-		include_once( SNOW_MONKEY_MEGA_MENU_PATH . '/dist/css/app.php' );
 	}
 }

@@ -5,7 +5,7 @@
  * Tested up to: 6.1
  * Requires at least: 6.1
  * Requires PHP: 5.6
- * Requires Snow Monkey: 15.0.0
+ * Requires Snow Monkey: 19.1.5
  * Description:
  * Author: inc2734
  * Author URI: https://2inc.org

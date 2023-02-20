@@ -1,53 +1,53 @@
 .snow-monkey-mega-menu--mega-menu-2 {
-  > .c-navbar__submenu {
-    > .c-navbar__subitem {
-      display: flex;
-      flex-wrap: nowrap;
-      @include container-padding();
-      padding-top: 1rem;
-      padding-bottom: 1rem;
+	> .c-navbar__submenu {
+		> .c-navbar__subitem {
+			display: flex;
+			flex-wrap: nowrap;
+			@include _container-padding();
+			padding-top: 1rem;
+			padding-bottom: 1rem;
 
-      > a {
-        flex: 1 1 25%;
-        max-width: 25%;
-        font-weight: bold;
-        padding-left: 0;
-      }
+			> a {
+				flex: 1 1 25%;
+				max-width: 25%;
+				font-weight: bold;
+				padding-left: 0;
+			}
 
-      > .c-navbar__submenu {
-        flex: 1 1 75%;
-        max-width: 75%;
-        position: static;
-        visibility: visible;
-        opacity: 1;
-        display: flex;
-        flex-wrap: wrap;
+			> .c-navbar__submenu {
+				flex: 1 1 75%;
+				max-width: 75%;
+				position: static;
+				visibility: visible;
+				opacity: 1;
+				display: flex;
+				flex-wrap: wrap;
 
-        &[aria-hidden="true"] {
-          pointer-events: none;
-        }
+				&[aria-hidden="true"] {
+					pointer-events: none;
+				}
 
-        > .c-navbar__subitem {
-          flex: none;
-        }
+				> .c-navbar__subitem {
+					flex: none;
+				}
 
-        .c-navbar__submenu {
-          display: none !important;
-        }
-      }
-    }
-  }
+				.c-navbar__submenu {
+					display: none !important;
+				}
+			}
+		}
+	}
 
-  .c-navbar__subitem {
-    > a {
-      @include _transition(opacity);
-    }
+	.c-navbar__subitem {
+		> a {
+			@include _transition(opacity);
+		}
 
-    @include _hover() {
-      > a {
-        background-color: transparent;
-        opacity: .8;
-      }
-    }
-  }
+		@include _hover() {
+			> a {
+				background-color: transparent;
+				opacity: .8;
+			}
+		}
+	}
 }

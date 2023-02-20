@@ -1,69 +1,58 @@
 @import 'core/core';
 
-.l-header:not(.l-header--left) [data-has-global-nav="true"],
-.p-drop-nav {
-  .snow-monkey-mega-menu > .c-navbar__submenu {
-    width: 100vw;
-    left: 0;
-    transform: none;
-    max-width: $_container-max-widt;
-    max-width: var(--_container-max-width, $_container-max-widt);
-  }
-}
-
 .l-header--left {
-  .snow-monkey-mega-menu {
-    > .c-navbar__submenu {
-      @include _media-min(lg) {
-        $body-margin-left: 280px; // for IE
-        --body-margin-left: #{ $body-margin-left };
-        width: calc(100vw - #{ $body-margin-left });
-        width: calc(100vw - var(--body-margin-left, #{ $body-margin-left }));
-        top: 50%;
-        left: 100%;
-        transform: translateY(-50%);
+	.snow-monkey-mega-menu {
+		> .c-navbar__submenu {
+			@include _media-min(lg) {
+				max-width: calc(100vw - var(--body-margin-left));
+				top: 50%;
+				left: 100%;
+				transform: translateY(-50%);
 
-        &::before,
-        &::after {
-          display: none;
-        }
-      }
-    }
-  }
+				&::before {
+					margin: 0 !important;
+				}
+			}
+		}
+	}
 }
 
 .snow-monkey-mega-menu {
-  .c-navbar__submenu {
-    background-color: transparent;
-  }
+	.c-navbar__submenu {
+		background-color: transparent;
+	}
 
-  > .c-navbar__submenu {
-    background-color: var(--accent-color, $color-accent);
+	> .c-navbar__submenu {
+		background-color: var(--wp--preset--color--sm-accent);
+		width: 100vw;
+		left: 0;
+		transform: none;
+		max-width: calc(var(--_container-max-width) + var(--_container-margin-right) + var(--_container-margin-left));
 
-    &::before {
-      content: '' !important;
-      position: absolute !important;
-      top: 0 !important;
-      right: 0 !important;
-      bottom: 0 !important;
-      left: 0 !important;
-      height: auto !important;
-      width: auto !important;
-      border: none !important;
-      margin: 0 calc(50% - 50vw) !important;
-      background-color: var(--accent-color, $color-accent);
-    }
+		&::before {
+			content: '' !important;
+			position: absolute !important;
+			top: 0 !important;
+			right: 0 !important;
+			bottom: 0 !important;
+			left: 0 !important;
+			height: auto !important;
+			width: auto !important;
+			border: none !important;
+			margin: 0 calc(50% - 50vw) !important;
+			background-color: var(--wp--preset--color--sm-accent);
+		}
 
-    &::after {
-      content: '';
-      position: absolute;
-      top: -1.5rem;
-      right: 0;
-      bottom: 0;
-      left: 0;
-      z-index: -1;
-    }
-  }
+		&::after {
+			content: '';
+			position: absolute;
+			top: -1.5rem;
+			right: 0;
+			bottom: 0;
+			left: 0;
+			z-index: -1;
+		}
+	}
 }
 
 @import 'mega-menu-1';

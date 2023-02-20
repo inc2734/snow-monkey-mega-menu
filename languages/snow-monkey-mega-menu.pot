@@ -1,0 +1,64 @@
+# Copyright (C) 2023 inc2734
+# This file is distributed under the GPL2 or later.
+msgid ""
+msgstr ""
+"Project-Id-Version: Snow Monkey Mega Menu 2.0.3\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/snow-monkey-mega-menu\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2023-02-20T02:12:22+00:00\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"X-Generator: WP-CLI 2.7.1\n"
+"X-Domain: snow-monkey-mega-menu\n"
+
+#. Plugin Name of the plugin
+msgid "Snow Monkey Mega Menu"
+msgstr ""
+
+#. Author of the plugin
+msgid "inc2734"
+msgstr ""
+
+#. Author URI of the plugin
+msgid "https://2inc.org"
+msgstr ""
+
+#: App/Controller/Admin.php:39
+msgid "Mega menu setting"
+msgstr ""
+
+#: App/Controller/Admin.php:45
+msgid "This is only reflected when menu Location is set to global navigation."
+msgstr ""
+
+#: App/Helper.php:19
+msgid "None"
+msgstr ""
+
+#: App/Helper.php:20
+msgid "Mega Menu 1"
+msgstr ""
+
+#: App/Helper.php:21
+msgid "Mega Menu 2"
+msgstr ""
+
+#: App/Helper.php:22
+msgid "Mega Menu 3"
+msgstr ""
+
+#: App/Helper.php:23
+msgid "Mega Menu 4"
+msgstr ""
+
+#: snow-monkey-mega-menu.php:54
+msgid "[Snow Monkey Mega Menu] Needs the Snow Monkey."
+msgstr ""
+
+#. translators: %1$s: version
+#: snow-monkey-mega-menu.php:84
+msgid "[Snow Monkey Mega Menu] Needs the Snow Monkey %1$s or more."
+msgstr ""
