@@ -106,9 +106,15 @@ class Front {
 				continue;
 			}
 
-			$item->classes[]             = 'snow-monkey-mega-menu';
-			$item->classes[]             = 'snow-monkey-mega-menu--' . $mega_menu;
-			$item->classes               = array_unique( $item->classes );
+			$item->classes[] = 'snow-monkey-mega-menu';
+			$item->classes[] = 'snow-monkey-mega-menu--' . $mega_menu;
+			$item->classes   = array_unique( $item->classes );
+
+			$mega_menu_alignfull = get_post_meta( $item->ID, 'snow-monkey-mega-menu-alignfull', true );
+			if ( $mega_menu_alignfull ) {
+					$item->classes[] = 'snow-monkey-mega-menu--alignfull';
+			}
+
 			$sorted_menu_items[ $index ] = $item;
 		}
 		return $sorted_menu_items;

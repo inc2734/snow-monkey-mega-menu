@@ -5,8 +5,8 @@ msgstr ""
 "Project-Id-Version: Snow Monkey Mega Menu 0.1.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/snow-monkey-mega-"
 "menu\n"
-"POT-Creation-Date: 2023-02-20T02:12:22+00:00\n"
-"PO-Revision-Date: 2023-02-20 11:12+0900\n"
+"POT-Creation-Date: 2023-02-21T13:01:57+00:00\n"
+"PO-Revision-Date: 2023-02-21 22:02+0900\n"
 "Last-Translator: inc2734 <inc@2inc.org>\n"
 "Language-Team: \n"
 "Language: ja\n"
@@ -46,6 +46,10 @@ msgid "This is only reflected when menu Location is set to global navigation."
 msgstr ""
 "メニューの位置がグローバルナビゲーションに設定されている場合にのみ反映されま"
 "す。"
+
+#: App/Controller/Admin.php:50
+msgid "Display the Mega Menu in full width."
+msgstr "メガメニューを全幅で表示する。"
 
 #: App/Helper.php:19
 msgid "None"

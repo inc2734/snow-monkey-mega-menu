@@ -31,11 +31,11 @@ class Admin {
 			return;
 		}
 
-		$mega_menu = get_post_meta( $item_id, 'snow-monkey-mega-menu', true );
-
-		$options = App\Helper::get_all_mega_menus();
+		$mega_menu           = get_post_meta( $item_id, 'snow-monkey-mega-menu', true );
+		$mega_menu_alignfull = get_post_meta( $item_id, 'snow-monkey-mega-menu-alignfull', true );
+		$options             = App\Helper::get_all_mega_menus();
 		?>
-		<p class="description">
+		<p class="field-description description description-wide">
 			<label for="snow-monkey-mega-menu[<?php echo esc_attr( $item_id ); ?>]"><?php esc_html_e( 'Mega menu setting', 'snow-monkey-mega-menu' ); ?></label>
 			<select name="snow-monkey-mega-menu[<?php echo esc_attr( $item_id ); ?>]" class="widefat">
 				<?php foreach ( $options as $value => $label ) : ?>
@@ -43,9 +43,14 @@ class Admin {
 				<?php endforeach; ?>
 			</select>
 			<span class="description"><?php esc_html_e( 'This is only reflected when menu Location is set to global navigation.', 'snow-monkey-mega-menu' ); ?></span>
-
-			<?php wp_nonce_field( 'snow-monkey-mega-menu', 'snow-monkey-mega-menu-nonce' ); ?>
 		</p>
+		<p class="field-description description description-wide">
+			<label>
+				<input type="checkbox" name="snow-monkey-mega-menu-alignfull[<?php echo esc_attr( $item_id ); ?>]" value="1" <?php checked( 1, $mega_menu_alignfull ); ?>>
+				<?php esc_html_e( 'Display the Mega Menu in full width.', 'snow-monkey-mega-menu' ); ?>
+			</label>
+		</p>
+		<?php wp_nonce_field( 'snow-monkey-mega-menu', 'snow-monkey-mega-menu-nonce' ); ?>
 		<?php
 	}
 
@@ -79,6 +84,21 @@ class Admin {
 			update_post_meta( $menu_item_db_id, 'snow-monkey-mega-menu', $mega_menu[ $menu_item_db_id ] );
 		} else {
 			delete_post_meta( $menu_item_db_id, 'snow-monkey-mega-menu' );
+		}
+
+		$mega_menu_alignfull = filter_input(
+			INPUT_POST,
+			'snow-monkey-mega-menu-alignfull',
+			FILTER_DEFAULT,
+			array(
+				'flags' => FILTER_REQUIRE_ARRAY,
+			)
+		);
+
+		if ( $mega_menu_alignfull && isset( $mega_menu_alignfull[ $menu_item_db_id ] ) ) {
+			update_post_meta( $menu_item_db_id, 'snow-monkey-mega-menu-alignfull', $mega_menu_alignfull[ $menu_item_db_id ] );
+		} else {
+			delete_post_meta( $menu_item_db_id, 'snow-monkey-mega-menu-alignfull' );
 		}
 	}
 }

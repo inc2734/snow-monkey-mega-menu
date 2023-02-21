@@ -27,7 +27,7 @@
 		width: 100vw;
 		left: 0;
 		transform: none;
-		max-width: calc(var(--_container-max-width) + var(--_container-margin-right) + var(--_container-margin-left));
+		max-width: calc(var(--_global--container-max-width) + var(--_container-margin-right) + var(--_container-margin-left));
 
 		&::before {
 			content: '' !important;
@@ -52,6 +52,12 @@
 			left: 0;
 			z-index: -1;
 		}
+	}
+}
+
+.snow-monkey-mega-menu--alignfull {
+	> .c-navbar__submenu {
+		--_global--container-max-width: none;
 	}
 }
 
