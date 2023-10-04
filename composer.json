@@ -24,7 +24,7 @@
   "scripts": {
     "lint": "./vendor/squizlabs/php_codesniffer/bin/phpcs",
     "format": "./vendor/squizlabs/php_codesniffer/bin/phpcbf",
-    "install-theme": "rm -rf ./.themes && mkdir ./.themes && wget -P ./.themes https://github.com/inc2734/snow-monkey/archive/master.zip && unzip -o -qq ./.themes/master.zip -d ./.themes && mv ./.themes/snow-monkey-master ./.themes/snow-monkey && cd .themes/snow-monkey && composer install --no-dev && rm -rf ./app/setup"
+    "install-theme": "rm -rf ./.themes && mkdir ./.themes && wget -P ./.themes https://github.com/inc2734/snow-monkey/archive/master.zip && unzip -o -qq ./.themes/master.zip -d ./.themes && mv ./.themes/snow-monkey-master ./.themes/snow-monkey && cd .themes/snow-monkey && composer install --no-dev"
   },
   "config": {
     "allow-plugins": {
