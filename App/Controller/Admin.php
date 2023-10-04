@@ -35,7 +35,7 @@ class Admin {
 		$mega_menu_alignfull = get_post_meta( $item_id, 'snow-monkey-mega-menu-alignfull', true );
 		$options             = App\Helper::get_all_mega_menus();
 		?>
-		<p class="field-description description description-wide">
+		<p class="field-smmm description description-wide">
 			<label for="snow-monkey-mega-menu[<?php echo esc_attr( $item_id ); ?>]"><?php esc_html_e( 'Mega menu setting', 'snow-monkey-mega-menu' ); ?></label>
 			<select name="snow-monkey-mega-menu[<?php echo esc_attr( $item_id ); ?>]" class="widefat">
 				<?php foreach ( $options as $value => $label ) : ?>
@@ -44,7 +44,7 @@ class Admin {
 			</select>
 			<span class="description"><?php esc_html_e( 'This is only reflected when menu Location is set to global navigation.', 'snow-monkey-mega-menu' ); ?></span>
 		</p>
-		<p class="field-description description description-wide">
+		<p class="field-smmm description description-wide">
 			<label>
 				<input type="checkbox" name="snow-monkey-mega-menu-alignfull[<?php echo esc_attr( $item_id ); ?>]" value="1" <?php checked( 1, $mega_menu_alignfull ); ?>>
 				<?php esc_html_e( 'Display the Mega Menu in full width.', 'snow-monkey-mega-menu' ); ?>
