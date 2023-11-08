@@ -64,7 +64,6 @@ function _manually_load_plugin() {
 		}
 	);
 
-	var_dump( get_stylesheet() );
 	require dirname( dirname( __FILE__ ) ) . '/snow-monkey-mega-menu.php';
 }
 tests_add_filter( 'muplugins_loaded', '_manually_load_plugin' );

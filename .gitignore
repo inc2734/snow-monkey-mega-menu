@@ -8,3 +8,4 @@ npm-debug.log
 .wp-env.override.json
 /.themes/
 /.export/*
+.phpunit.result.cache

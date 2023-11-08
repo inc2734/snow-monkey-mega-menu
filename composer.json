@@ -1,34 +1,35 @@
 {
-  "type": "wordpress-plugin",
-  "license": "GPL-2.0-or-later",
-  "require": {
-    "php": ">=7.4",
-    "inc2734/wp-github-plugin-updater": "^3.1"
-  },
-  "require-dev": {
-    "dealerdirect/phpcodesniffer-composer-installer": "^0.7",
-    "wp-coding-standards/wpcs": "^2.3",
-    "yoast/phpunit-polyfills": "^1.0"
-  },
-  "authors": [
-    {
-      "name": "Takashi Kitajima",
-      "email": "inc@2inc.org"
-    }
-  ],
-  "autoload": {
-    "psr-4" : {
-      "Snow_Monkey\\Plugin\\MegaMenu\\" : ""
-    }
-  },
-  "scripts": {
-    "lint": "./vendor/squizlabs/php_codesniffer/bin/phpcs",
-    "format": "./vendor/squizlabs/php_codesniffer/bin/phpcbf",
-    "install-theme": "rm -rf ./.themes && mkdir ./.themes && wget -P ./.themes https://github.com/inc2734/snow-monkey/archive/master.zip && unzip -o -qq ./.themes/master.zip -d ./.themes && mv ./.themes/snow-monkey-master ./.themes/snow-monkey && cd .themes/snow-monkey && composer install --no-dev"
-  },
-  "config": {
-    "allow-plugins": {
-      "dealerdirect/phpcodesniffer-composer-installer": true
-    }
-  }
+	"name": "inc2734/snow-monkey-mega-menu",
+	"type": "wordpress-plugin",
+	"license": "GPL-2.0-or-later",
+	"require": {
+		"php": ">=7.4",
+		"inc2734/wp-github-plugin-updater": "^3.1"
+	},
+	"require-dev": {
+		"dealerdirect/phpcodesniffer-composer-installer": "^0.7",
+		"wp-coding-standards/wpcs": "^2.3",
+		"yoast/phpunit-polyfills": "^1.0"
+	},
+	"authors": [
+		{
+			"name": "Takashi Kitajima",
+			"email": "inc@2inc.org"
+		}
+	],
+	"autoload": {
+		"psr-4" : {
+			"Snow_Monkey\\Plugin\\MegaMenu\\" : ""
+		}
+	},
+	"scripts": {
+		"lint": "./vendor/squizlabs/php_codesniffer/bin/phpcs",
+		"format": "./vendor/squizlabs/php_codesniffer/bin/phpcbf",
+		"install-theme": "rm -rf ./.themes && mkdir ./.themes && wget -P ./.themes https://github.com/inc2734/snow-monkey/archive/master.zip && unzip -o -qq ./.themes/master.zip -d ./.themes && mv ./.themes/snow-monkey-master ./.themes/snow-monkey && cd .themes/snow-monkey && composer install --no-dev"
+	},
+	"config": {
+		"allow-plugins": {
+			"dealerdirect/phpcodesniffer-composer-installer": true
+		}
+	}
 }
