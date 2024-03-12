@@ -57,6 +57,7 @@
 		"zip:pack": "rsync -a --exclude='/vendor' --exclude='/node_modules' --exclude='.*' --exclude='*.config.js' --exclude='*.xml.dist' --exclude='*.ruleset.xml' --exclude='/sql' --exclude='/tests' --exclude='/uploads' --exclude='package*.json' . snow-monkey-mega-menu && wp-env start && npm run composer install -- --no-dev -d snow-monkey-mega-menu",
 		"zip:archive": "zip -9 -qmr snow-monkey-mega-menu.zip snow-monkey-mega-menu",
 		"zip": "npm run clean:zip && npm run zip:pack && npm run zip:archive",
-		"make-pot": "npm run wp i18n -- make-pot . ./languages/snow-monkey-mega-menu.pot --exclude=src"
+		"make-pot": "npm run wp i18n -- make-pot . ./languages/snow-monkey-mega-menu.pot --exclude=src",
+		"make-php": "npm run cli php -- wp-content/plugins/snow-monkey-mega-menu/bin/l10n.php"
 	}
 }
