@@ -1,9 +1,15 @@
-@import 'core/core';
+@use '../../node_modules/sass-basis/src/css/core';
+
+@use 'mega-menu';
+@use 'mega-menu-1';
+@use 'mega-menu-2';
+@use 'mega-menu-3';
+@use 'mega-menu-4';
 
 .l-header--left {
 	.snow-monkey-mega-menu {
 		> .c-navbar__submenu {
-			@include _media-min(lg) {
+			@include core.media-min(lg) {
 				max-width: calc(100vw - var(--body-margin-left));
 				top: 50%;
 				left: 100%;
@@ -17,51 +23,8 @@
 	}
 }
 
-.snow-monkey-mega-menu {
-	.c-navbar__submenu {
-		background-color: transparent;
-	}
-
-	> .c-navbar__submenu {
-		background-color: var(--wp--preset--color--sm-accent);
-		width: 100vw;
-		left: 0;
-		transform: none;
-		max-width: calc(var(--_global--container-max-width) + var(--_container-margin-right) + var(--_container-margin-left));
-
-		&::before {
-			content: '' !important;
-			position: absolute !important;
-			top: 0 !important;
-			right: 0 !important;
-			bottom: 0 !important;
-			left: 0 !important;
-			height: auto !important;
-			width: auto !important;
-			border: none !important;
-			margin: 0 calc(50% - 50vw) !important;
-			background-color: var(--wp--preset--color--sm-accent);
-		}
-
-		&::after {
-			content: '';
-			position: absolute;
-			top: -1.5rem;
-			right: 0;
-			bottom: 0;
-			left: 0;
-			z-index: -1;
-		}
-	}
-}
-
 .snow-monkey-mega-menu--alignfull {
 	> .c-navbar__submenu {
 		--_global--container-max-width: none;
 	}
 }
-
-@import 'mega-menu-1';
-@import 'mega-menu-2';
-@import 'mega-menu-3';
-@import 'mega-menu-4';

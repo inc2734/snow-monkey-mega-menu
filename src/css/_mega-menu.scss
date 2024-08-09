@@ -1,0 +1,31 @@
+.snow-monkey-mega-menu {
+	.c-navbar__submenu {
+		background-color: transparent;
+	}
+
+	> .c-navbar__submenu {
+		background-color: var(--wp--preset--color--sm-accent);
+		width: 100vw;
+		left: 0;
+		transform: none;
+		max-width: calc(var(--_global--container-max-width) + var(--_container-margin-right) + var(--_container-margin-left));
+
+		&::before {
+			content: '' !important;
+			position: absolute !important;
+			inset: 0 !important;
+			height: auto !important;
+			width: auto !important;
+			border: none !important;
+			margin: 0 calc(50% - 50vw) !important;
+			background-color: var(--wp--preset--color--sm-accent);
+		}
+
+		&::after {
+			content: '';
+			position: absolute;
+			inset: -1.5rem 0 0 0;
+			z-index: -1;
+		}
+	}
+}

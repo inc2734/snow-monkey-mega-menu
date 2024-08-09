@@ -1,3 +1,5 @@
+@use '../../node_modules/sass-basis/src/css/core';
+
 .l-header {
 	.snow-monkey-mega-menu--mega-menu-1 {
 		> .c-navbar__submenu {
@@ -12,7 +14,7 @@
 		display: flex;
 		flex-wrap: wrap;
 		white-space: normal;
-		@include _container-padding();
+		@include core.container-padding();
 		padding-top: var(--_padding1);
 		padding-bottom: var(--_padding1);
 
@@ -53,10 +55,10 @@
 
 	.c-navbar__subitem {
 		> a {
-			@include _transition(opacity);
+			@include core.transition(opacity);
 		}
 
-		@include _hover() {
+		@include core.hover() {
 			> a {
 				background-color: transparent;
 				opacity: .9;
@@ -75,22 +77,12 @@
 		}
 
 		> img {
-			width: 100%;
 			position: absolute;
-			top: 50%;
-			left: 50%;
-			transform: translate(-50%, -50%);
-
-			@supports (object-fit: cover) {
-				top: 0;
-				left: 0;
-				right: 0;
-				bottom: 0;
-				transform: none;
-				object-fit: cover;
-				object-position: 50% 50%;
-				height: 100%;
-			}
+			inset: 0;
+			height: 100%;
+			width: 100%;
+			object-fit: cover;
+			object-position: 50% 50%;
 		}
 	}
 

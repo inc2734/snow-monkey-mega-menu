@@ -1,11 +1,13 @@
+@use 'sass:math';
+
 .snow-monkey-mega-menu--mega-menu-3 {
 	> .c-navbar__submenu {
 		display: flex;
 		flex-wrap: wrap;
 
 		> .c-navbar__subitem {
-			flex: 1 1 (100 / 6 * 1%);
-			max-width: (100 / 6 * 1%);
+			flex: 1 1 #{ math.div(100, 6) * 1% };
+			max-width: #{ math.div(100, 6) * 1% };
 
 			> a {
 				padding: var(--_padding-1) var(--_padding1);

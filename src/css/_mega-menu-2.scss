@@ -1,9 +1,11 @@
+@use '../../node_modules/sass-basis/src/css/core';
+
 .snow-monkey-mega-menu--mega-menu-2 {
 	> .c-navbar__submenu {
 		> .c-navbar__subitem {
 			display: flex;
 			flex-wrap: nowrap;
-			@include _container-padding();
+			@include core.container-padding();
 			padding-top: 1rem;
 			padding-bottom: 1rem;
 
@@ -40,10 +42,10 @@
 
 	.c-navbar__subitem {
 		> a {
-			@include _transition(opacity);
+			@include core.transition(opacity);
 		}
 
-		@include _hover() {
+		@include core.hover() {
 			> a {
 				background-color: transparent;
 				opacity: .8;
