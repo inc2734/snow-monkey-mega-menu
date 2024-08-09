@@ -48,7 +48,7 @@ class Bootstrap {
 		if ( 'snow-monkey' !== $theme->template && 'snow-monkey/resources' !== $theme->template ) {
 			add_action(
 				'admin_notices',
-				function() {
+				function () {
 					?>
 					<div class="notice notice-warning is-dismissible">
 						<p>
@@ -74,14 +74,14 @@ class Bootstrap {
 		) {
 			add_action(
 				'admin_notices',
-				function() use ( $data ) {
+				function () use ( $data ) {
 					?>
 					<div class="notice notice-warning is-dismissible">
 						<p>
 							<?php
 							echo esc_html(
 								sprintf(
-									// translators: %1$s: version
+									// translators: %1$s: version.
 									__(
 										'[Snow Monkey Mega Menu] Needs the Snow Monkey %1$s or more.',
 										'snow-monkey-mega-menu'
@@ -104,7 +104,7 @@ class Bootstrap {
 		 */
 		add_action(
 			'after_setup_theme',
-			function() {
+			function () {
 				$header_layout        = get_theme_mod( 'header-layout' );
 				$valid_header_layouts = array(
 					false,
@@ -141,5 +141,5 @@ class Bootstrap {
 	}
 }
 
-require_once( SNOW_MONKEY_MEGA_MENU_PATH . '/vendor/autoload.php' );
+require_once SNOW_MONKEY_MEGA_MENU_PATH . '/vendor/autoload.php';
 new Bootstrap();
