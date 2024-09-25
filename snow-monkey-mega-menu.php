@@ -1,7 +1,7 @@
 <?php
 /**
  * Plugin name: Snow Monkey Mega Menu
- * Version: 3.3.1
+ * Version: 3.3.2
  * Descriptions: This plugin turns Snow Monkey's global navigation into a mega menu.
  * Tested up to: 6.6
  * Requires at least: 6.1
