@@ -10,7 +10,7 @@
 		"dealerdirect/phpcodesniffer-composer-installer": "^1.0",
 		"phpcompatibility/phpcompatibility-wp": "*",
 		"wp-coding-standards/wpcs": "^3.1",
-		"yoast/phpunit-polyfills": "^1.0"
+		"yoast/phpunit-polyfills": "^2.0"
 	},
 	"authors": [
 		{
@@ -24,8 +24,8 @@
 		}
 	},
 	"scripts": {
-		"lint": "./vendor/squizlabs/php_codesniffer/bin/phpcs",
-		"format": "./vendor/squizlabs/php_codesniffer/bin/phpcbf",
+		"lint": "phpcs --standard=.phpcs.xml.dist",
+		"format": "phpcbf --standard=.phpcs.xml.dist --report-summary --report-source",
 		"install-theme": "rm -rf ./.themes && mkdir ./.themes && wget -P ./.themes https://github.com/inc2734/snow-monkey/archive/master.zip && unzip -o -qq ./.themes/master.zip -d ./.themes && mv ./.themes/snow-monkey-master ./.themes/snow-monkey && cd .themes/snow-monkey && composer install --no-dev"
 	},
 	"config": {
