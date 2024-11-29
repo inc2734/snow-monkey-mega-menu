@@ -30,7 +30,7 @@ class Front {
 	 * @return string
 	 */
 	public function _item( $item_output, $item, $depth, $args ) {
-		if ( 'global-nav' !== $args->theme_location ) {
+		if ( 'global-nav' !== $args->theme_location && 'drop-nav' !== $args->theme_location ) {
 			return $item_output;
 		}
 
@@ -96,7 +96,7 @@ class Front {
 	 * @return array
 	 */
 	public function _add_classes( $sorted_menu_items, $args ) {
-		if ( 'global-nav' !== $args->theme_location ) {
+		if ( 'global-nav' !== $args->theme_location && 'drop-nav' !== $args->theme_location ) {
 			return $sorted_menu_items;
 		}
 
