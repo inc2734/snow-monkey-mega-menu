@@ -62,7 +62,7 @@ class Front {
 		if ( in_array( $item->type, array( 'post_type_archive', 'post_type' ), true ) && 'forum' === $item->object ) {
 			$post_type_object = get_post_type_object( $item->object );
 			$thumbnail        = Helper\Page_Header\BbPress_Archive_Page_Header::get_image( $post_type_object, $thumbnail_size );
-		} else if ( 'post_type_archive' === $item->type && 'product' === $item->object ) {
+		} elseif ( 'post_type_archive' === $item->type && 'product' === $item->object ) {
 			$post_type_object = get_post_type_object( $item->object );
 			$thumbnail        = Helper\Page_Header\WooCommerce_Archive_Page_Header::get_image( $post_type_object, $thumbnail_size );
 		} elseif ( 'taxonomy' === $item->type && in_array( $item->object, array( 'product_cat', 'product_tag' ), true ) ) {
