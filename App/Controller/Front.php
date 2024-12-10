@@ -84,6 +84,8 @@ class Front {
 			$thumbnail = Helper\Page_Header\Default_Page_Header::get_image( null, $thumbnail_size );
 		}
 
+		$thumbnail = apply_filters( 'snow_monkey_mega_menu_thumbnail', $thumbnail, $item, $thumbnail_size );
+
 		return preg_replace(
 			'|(<a [^>]*?>)(.*?)(</a>)|ms',
 			'$1<div class="snow-monkey-mega-menu__figure">' . $thumbnail . '</div><div class="snow-monkey-mega-menu__label">$2</div>$3',
