@@ -26,7 +26,7 @@ jobs:
     - name: Use Node.js
       uses: actions/setup-node@v7
       with:
-        node-version-file: 'package.json'
+        node-version-file: package.json
         cache: npm
 
     - name: Npm install
@@ -34,7 +34,7 @@ jobs:
 
     - name: Get Composer Cache Directory
       id: composer-cache
-      run: echo "dir=$(composer config cache-files-dir)" >> $GITHUB_OUTPUT
+      run: echo "dir=$(composer config cache-files-dir)" >> "$GITHUB_OUTPUT"
 
     - name: Cache vendor
       uses: actions/cache@v6
@@ -45,7 +45,7 @@ jobs:
           ${{ runner.os }}-composer-
 
     - name: Composer install
-      run: composer install --no-interaction --prefer-dist
+      run: composer install --no-interaction --prefer-dist --no-progress
 
     - name: Npm build
       run: npm run build
