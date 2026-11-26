@@ -34,10 +34,11 @@ class Admin {
 		$mega_menu           = get_post_meta( $item_id, 'snow-monkey-mega-menu', true );
 		$mega_menu_alignfull = get_post_meta( $item_id, 'snow-monkey-mega-menu-alignfull', true );
 		$options             = App\Helper::get_all_mega_menus();
+		$field_id            = 'snow-monkey-mega-menu-' . $item_id;
 		?>
 		<p class="field-smmm description description-wide">
-			<label for="snow-monkey-mega-menu[<?php echo esc_attr( $item_id ); ?>]"><?php esc_html_e( 'Mega menu setting', 'snow-monkey-mega-menu' ); ?></label>
-			<select name="snow-monkey-mega-menu[<?php echo esc_attr( $item_id ); ?>]" class="widefat">
+			<label for="<?php echo esc_attr( $field_id ); ?>"><?php esc_html_e( 'Mega menu setting', 'snow-monkey-mega-menu' ); ?></label>
+			<select id="<?php echo esc_attr( $field_id ); ?>" name="snow-monkey-mega-menu[<?php echo esc_attr( $item_id ); ?>]" class="widefat">
 				<?php foreach ( $options as $value => $label ) : ?>
 					<option value="<?php echo esc_attr( $value ); ?>" <?php selected( $value, $mega_menu ); ?>><?php echo esc_html( $label ); ?></option>
 				<?php endforeach; ?>
