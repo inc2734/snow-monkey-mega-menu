@@ -106,6 +106,10 @@ class Front {
 		}
 
 		foreach ( $sorted_menu_items as $index => $item ) {
+			if ( ! empty( $item->menu_item_parent ) ) {
+				continue;
+			}
+
 			$mega_menu = get_post_meta( $item->ID, 'snow-monkey-mega-menu', true );
 			if ( ! $mega_menu ) {
 				continue;

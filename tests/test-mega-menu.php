@@ -40,6 +40,23 @@ class MegaMenuTest extends WP_UnitTestCase {
 	}
 
 	/**
+	 * Verify that children with saved mega menu settings render as submenu items.
+	 */
+	public function test_skips_mega_menu_settings_on_nested_items() {
+		list( $menu, , $child ) = $this->create_menu( 'mega-menu-1' );
+		update_post_meta( $child, 'snow-monkey-mega-menu', 'mega-menu-2' );
+		update_post_meta( $child, 'snow-monkey-mega-menu-alignfull', '1' );
+
+		foreach ( array( 'global-nav', 'drop-nav' ) as $location ) {
+			$html = $this->render_menu( $menu, $location );
+			$this->assertStringContainsString( 'snow-monkey-mega-menu--mega-menu-1', $html );
+			$this->assertStringContainsString( 'Child link', $html );
+			$this->assertStringNotContainsString( 'snow-monkey-mega-menu--mega-menu-2', $html );
+			$this->assertStringNotContainsString( 'snow-monkey-mega-menu--alignfull', $html );
+		}
+	}
+
+	/**
 	 * Verify that ordinary navigation remains unaffected by mega menu settings.
 	 */
 	public function test_keeps_other_locations_and_unconfigured_items_unchanged() {
@@ -95,7 +112,7 @@ class MegaMenuTest extends WP_UnitTestCase {
 			)
 		);
 		$this->assertNotWPError( $parent );
-		wp_update_nav_menu_item(
+		$child = wp_update_nav_menu_item(
 			$menu,
 			0,
 			array(
@@ -105,8 +122,9 @@ class MegaMenuTest extends WP_UnitTestCase {
 				'menu-item-status'    => 'publish',
 			)
 		);
+		$this->assertNotWPError( $child );
 		update_post_meta( $parent, 'snow-monkey-mega-menu', $variant );
-		return array( $menu, $parent );
+		return array( $menu, $parent, $child );
 	}
 
 	/**
